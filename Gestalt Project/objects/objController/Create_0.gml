@@ -1,0 +1,1 @@
+global.mental_state = 101;

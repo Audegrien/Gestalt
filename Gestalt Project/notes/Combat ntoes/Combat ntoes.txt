@@ -1,0 +1,13 @@
+Mental Clarity System
+Start at a level of 0
+
+- Values is in the "Dark" part of the game
++ values is in the "light" part of the game
+Lore and info is locked off depending on what state you are in
+FIghting enemies takes away point
+Confronting the enemies adds points on
+running from enemies does nothing
+
+poentially make  enemies harder in the dark part of the game
+
+
