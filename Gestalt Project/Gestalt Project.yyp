@@ -66,6 +66,7 @@
   "name":"Gestalt Project",
   "resources":[
     {"id":{"name":"Combat ntoes","path":"notes/Combat ntoes/Combat ntoes.yy",},},
+    {"id":{"name":"Github Test","path":"notes/Github Test/Github Test.yy",},},
     {"id":{"name":"custom_camera","path":"objects/custom_camera/custom_camera.yy",},},
     {"id":{"name":"obj_circle","path":"objects/obj_circle/obj_circle.yy",},},
     {"id":{"name":"obj_light_lamp","path":"objects/obj_light_lamp/obj_light_lamp.yy",},},

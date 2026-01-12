@@ -32,6 +32,7 @@
   ],
   "ResourceOrderSettings":[
     {"name":"Combat ntoes","order":4,"path":"notes/Combat ntoes/Combat ntoes.yy",},
+    {"name":"Github Test","order":9,"path":"notes/Github Test/Github Test.yy",},
     {"name":"custom_camera","order":10,"path":"objects/custom_camera/custom_camera.yy",},
     {"name":"obj_light_lamp","order":2,"path":"objects/obj_light_lamp/obj_light_lamp.yy",},
     {"name":"obj_light_mouse","order":3,"path":"objects/obj_light_mouse/obj_light_mouse.yy",},
