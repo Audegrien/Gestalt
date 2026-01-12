@@ -18,6 +18,41 @@ if instance_exists(objPauser)
 	
 }
 
+//Flashlight
+// Toggle flashlight
+if (keyboard_check_pressed(vk_shift))
+{
+    flashlight_on = !flashlight_on;
+
+    if (flashlight_on)
+    {
+        // Create once
+        if (!instance_exists(flashlight_inst))
+        {
+            flashlight_inst = instance_create_depth(x, y, -9999, objFlashlight);
+            flashlight_inst.owner = id;
+        }
+
+        // Enable + turn light on
+        flashlight_inst.enabled = true;
+        uls_set_light_alpha(flashlight_inst, flashlight_inst.on_alpha);
+        uls_set_light_animation(flashlight_inst, flashlight_inst.on_anim);
+        uls_set_light_color(flashlight_inst, flashlight_inst.warm_col);
+    }
+    else
+    {
+        // Disable + turn light off
+        if (instance_exists(flashlight_inst))
+        {
+            flashlight_inst.enabled = false;
+            uls_set_light_alpha(flashlight_inst, 0);
+            uls_set_light_animation(flashlight_inst, false);
+        }
+    }
+}
+
+
+
 //set sprite
 mask_index = sprite[DOWN];
 if yspd == 0

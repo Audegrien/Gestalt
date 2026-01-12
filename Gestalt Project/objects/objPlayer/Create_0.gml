@@ -10,3 +10,8 @@ sprite[LEFT] = sprPlayer_Left;
 sprite[DOWN] = sprPlayer_Down;
 
 face = DOWN;
+
+//Flashlight 
+flashlight_inst = noone;
+flashlight_on = false;
+
