@@ -2,7 +2,7 @@
 ///@param alpha
 function uls_set_general_light_intensity(argument0) {
 
-	with(obj_uls_controller)
+	with(obj_uls_controllerBackup)
 	{
 		//Set
 		final_light_alpha = argument0;

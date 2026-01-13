@@ -13,8 +13,8 @@
     "path":"folders/Objects.yy",
   },
   "parentObjectId":{
-    "name":"obj_uls_light",
-    "path":"objects/obj_uls_light/obj_uls_light.yy",
+    "name":"obj_light_torch",
+    "path":"objects/obj_light_torch/obj_light_torch.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -34,12 +34,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprFlashlight",
-    "path":"sprites/sprFlashlight/sprFlashlight.yy",
+    "name":"sprLighter",
+    "path":"sprites/sprLighter/sprLighter.yy",
   },
-  "spriteMaskId":{
-    "name":"spr_light_cone",
-    "path":"sprites/spr_light_cone/spr_light_cone.yy",
-  },
+  "spriteMaskId":null,
   "visible":true,
 }

@@ -2,7 +2,7 @@
 ///@param enable
 function uls_set_blur_intensity(argument0) {
 
-	with(obj_uls_controller)
+	with(obj_uls_controllerBackup)
 	{
 		//Set 
 		blur_effect_intensity = argument0;

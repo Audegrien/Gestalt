@@ -2,7 +2,7 @@
 ///@param enable
 function uls_set_particle_enable(argument0) {
 
-	with(obj_uls_controller)
+	with(obj_uls_controllerBackup)
 	{
 		//Set 
 		particle_layer = argument0;

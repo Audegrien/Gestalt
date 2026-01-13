@@ -3,7 +3,7 @@
 ///@param color
 function uls_set_shadow_color(argument0, argument1) {
 
-	with(obj_uls_controller)
+	with(obj_uls_controllerBackup)
 	{
 		//Getting
 		var c_alpha = argument0;

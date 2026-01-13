@@ -1,15 +1,17 @@
-event_inherited(); 
+event_inherited();
 
-owner   = noone;
+owner = noone;
 enabled = true;
 
-// “On” settings (prevents the light staying off after toggle)
-on_alpha = 0.7;
-on_anim  = true; 
+warm_col = make_color_rgb(255, 150, 100);
 
-// Warm colour (tweak values if you want)
-warm_col = make_color_rgb(255, 180, 130);
+on_alpha = 0.8;
+on_anim  = false; // keep false unless you WANT flicker/size pulsing
 
-// Apply initial colour + ensure animation state
+// Force a stable starting state (prevents parent default animation fighting you)
+uls_set_light_animation(id, false);
+uls_set_light_alpha(id, on_alpha);
 uls_set_light_color(id, warm_col);
-uls_set_light_animation(id, on_anim);
+
+draw_extra_glow = false;
+light_animation = true;
