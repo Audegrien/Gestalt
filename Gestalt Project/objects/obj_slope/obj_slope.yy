@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Custom Shapes",
-    "path":"folders/Objects/Example/Custom Shapes.yy",
+    "path":"folders/Core Systems/Lighting System/Objects/Example/Custom Shapes.yy",
   },
   "parentObjectId":{
     "name":"obj_uls_collider",

@@ -25,8 +25,8 @@
   ],
   "name":"rmTitlescreen",
   "parent":{
-    "name":"Menu System",
-    "path":"folders/Core Systems/Menu System.yy",
+    "name":"Core Systems",
+    "path":"folders/Core Systems.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

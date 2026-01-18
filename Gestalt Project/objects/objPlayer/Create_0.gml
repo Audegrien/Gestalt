@@ -27,5 +27,16 @@ battery       = global.battery;
 
 flashlight_inst = noone;
 
-// (you probably already set this somewhere)
-face = DOWN;
+hp_max = 100;
+hp = hp_max;
+
+
+hp_max = 100;
+hp = hp_max;
+
+// (mental state removed - it's global now)
+
+equip_weapon = "";   // or "Shiv"
+equip_armor  = "";   // or "Jacket"
+portrait_sprite = sprPlayerPortrait;
+
