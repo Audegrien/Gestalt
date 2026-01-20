@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scrInvBuildCache",
+  "%Name":"scrInvText",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scrInvBuildCache",
+  "name":"scrInvText",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

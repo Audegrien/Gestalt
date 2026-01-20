@@ -108,112 +108,105 @@ if (menu_level == 0 || menu_level == 1)
     // Done for 0/1
     exit;
 }
-
 // -------------------- MENU 2 (Inventory) --------------------
 if (menu_level == 2)
 {
-    // Back to pause menu
+    // textbox owns input
+    if (instance_exists(objTextbox)) exit;
+
+    var invCount = inv_count();
+
+    // clamp selection
+    if (invCount > 0) pos = clamp(pos, 0, invCount - 1);
+    else pos = 0;
+
+    // basic scroll safety (even though max is 8)
+    if (pos < inv_scroll) inv_scroll = pos;
+    if (pos >= inv_scroll + inv_visible) inv_scroll = pos - inv_visible + 1;
+
+    // BACK always returns to pause menu from list, or back to list from actions
     if (back_key)
     {
+        if (inv_mode == 1) { inv_mode = 0; exit; }
         menu_level = 0;
         pos = 0;
-        op_length = array_length(option[menu_level]);
+        inv_mode = 0;
         exit;
     }
 
-    // Tab switching
-    if (right_key)
+    if (inv_mode == 0)
     {
-        inv_tab = (inv_tab + 1) mod 4;
-        inv_dirty = true;
-        pos = 0;
-    }
-    if (left_key)
-    {
-        inv_tab = (inv_tab + 3) mod 4;
-        inv_dirty = true;
-        pos = 0;
-    }
-
-    // Rebuild cache if needed
-    if (inv_dirty)
-    {
-        inv_cache = scrInvBuildCache(inv_tab);
-        inv_dirty = false;
-        pos = 0;
-    }
-
-    var count = array_length(inv_cache);
-
-    // Move selection within current tab list
-    if (count > 0)
-    {
-        pos += down_key - up_key;
-        if (pos >= count) pos = 0;
-        if (pos < 0) pos = count - 1;
-    }
-    else
-    {
-        pos = 0;
-    }
-
-    // Use / Equip
-    if (accept_key && count > 0)
-    {
-        var inv_index = inv_cache[pos];
-        var e = global.inv[| inv_index];
-
-        var pl = instance_exists(objPlayer) ? instance_find(objPlayer, 0) : noone;
-
-        switch (inv_tab)
+        // list navigation
+        if (invCount > 0)
         {
-            case 0: // Consumables
-                // Apply effect
-                if (pl != noone)
-                {
-                    switch (e.id)
-                    {
-                        case "Medkit":
-                            pl.hp = clamp(pl.hp + 25, 0, pl.hp_max);
-                        break;
-                    }
-                }
+            pos += down_key - up_key;
+            if (pos >= invCount) pos = 0;
+            if (pos < 0) pos = invCount - 1;
+        }
 
-                // Consume 1
-                e.qty -= 1;
-                if (e.qty <= 0) ds_list_delete(global.inv, inv_index);
-                else global.inv[| inv_index] = e;
-
-                inv_dirty = true;
-            break;
-
-            case 1: // Key Items
-                // Inspect-only for now (no action)
-            break;
-
-            case 2: // Weapons
-                if (pl != noone) pl.equip_weapon = e.id;
-            break;
-
-            case 3: // Armour
-                if (pl != noone) pl.equip_armor = e.id;
-            break;
+        // open actions
+        if (accept_key)
+        {
+            if (invCount <= 0)
+            {
+                create_textbox("INV|EMPTY");
+            }
+            else
+            {
+                inv_mode = 1;
+                inv_action_pos = 0;
+            }
         }
     }
-
-    exit;
-}
-
-// -------------------- MENU 3 (Character/Stats) --------------------
-if (menu_level == 3)
-{
-    // ESC or SPACE to go back
-    if (back_key || accept_key)
+    else // inv_mode == 1 (actions)
     {
-        menu_level = 0;
-        pos = 0;
-        op_length = array_length(option[menu_level]);
-    }
+        // action navigation
+        var aLen = array_length(inv_actions);
+        inv_action_pos += down_key - up_key;
+        if (inv_action_pos >= aLen) inv_action_pos = 0;
+        if (inv_action_pos < 0) inv_action_pos = aLen - 1;
+
+        if (accept_key && invCount > 0)
+        {
+			var entry = inv_get(pos);
+			var item_id = entry.id;
+			var def = global.ItemDB[$ item_id];
+			var choice = inv_actions[inv_action_pos];
+
+			if (choice == "Info")
+			{
+			    create_textbox("INV|INFO|" + item_id);
+			}
+			else if (choice == "Discard")
+			{
+			    create_textbox("INV|DISCARD|" + item_id);
+			    inv_mode = 0;
+			}
+			else if (choice == "Use")
+			{
+			    var p = instance_find(objPlayer, 0);
+			    var ok = true;
+
+			    if (is_callable(def.useFn)) ok = def.useFn(p);
+			    if (ok)
+			    {
+			        if (def.consumable) inv_remove_at(pos, 1);
+			        create_textbox("INV|USED|" + item_id);
+			    }
+			    else
+			    {
+			        create_textbox("INV|EMPTY"); // swap later if you want “It won’t work.”
+			    }
+
+			    inv_mode = 0;
+			}
+			else // Cancel
+			{
+			    inv_mode = 0;
+			}
+
+            }
+        }
 
     exit;
 }

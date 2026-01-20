@@ -30,13 +30,6 @@ flashlight_inst = noone;
 hp_max = 100;
 hp = hp_max;
 
-
-hp_max = 100;
-hp = hp_max;
-
-// (mental state removed - it's global now)
-
-equip_weapon = "";   // or "Shiv"
-equip_armor  = "";   // or "Jacket"
-portrait_sprite = sprPlayerPortrait;
-
+scrInvInit();
+inv_add("pie", 1);
+inv_add("bandage", 1);
