@@ -22,13 +22,19 @@ option[1, 3] = "Back";
 op_length = 0;
 menu_level = 0;
 
-// Inventory menu vars
+// -------------------- INVENTORY MENU VARS --------------------
 inv_mode = 0; // 0=list, 1=actions
 inv_action_pos = 0;
+
 inv_actions[0] = "Use";
 inv_actions[1] = "Info";
 inv_actions[2] = "Discard";
 inv_actions[3] = "Cancel";
 
 inv_scroll = 0;
-inv_visible = 8; // show 8 lines like Undertale
+inv_visible = 6; // smaller Y than 8; change to 8 if you prefer
+
+// Critical: prevents Space that closes a textbox from also triggering inventory
+inv_require_space_up = true;
+inv_tb_was_open = false;
+inv_accept_cooldown = 0;

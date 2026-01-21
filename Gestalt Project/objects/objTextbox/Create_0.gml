@@ -1,4 +1,4 @@
-depth = -9999;
+depth = -10000;
 //textbox parameters
 textbox_width = 103;
 spawn_wait = 0; // new variable: blocks drawing until setup finishes

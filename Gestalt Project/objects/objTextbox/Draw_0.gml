@@ -1,4 +1,7 @@
 var accept_key = keyboard_check_pressed(vk_space);
+if (!variable_global_exists("ui_lock_space")) global.ui_lock_space = false;
+if (accept_key) global.ui_lock_space = true; // textbox consumed SPACE this frame
+
 // Don't draw yet if this textbox just spawned
 if (spawn_wait > 0)
 {

@@ -4,7 +4,7 @@ function scrGameText(_text_id)
 	    // Inventory “virtual IDs”
     if (string_copy(_text_id, 1, 4) == "INV|")
     {
-        scrInventoryText(_text_id);
+        scrInvText(_text_id);
         return;
     }
 	

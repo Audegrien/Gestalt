@@ -32,4 +32,3 @@ hp = hp_max;
 
 scrInvInit();
 inv_add("pie", 1);
-inv_add("bandage", 1);

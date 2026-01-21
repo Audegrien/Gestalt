@@ -34,10 +34,20 @@ function scrInvText(_id)
             scrOption("No",  "INV|DISCARD_NO|"  + item_id);
         break;
 
-        case "DISCARD_YES":
-            inv_remove_id(item_id, 1);
-            scrText("You threw away the " + def.name + ".");
-        break;
+		case "DISCARD_YES":
+		    if (!variable_global_exists("inv_action_guard")) global.inv_action_guard = false;
+
+		    // Only allow one inventory mutation per SPACE press
+		    if (global.inv_action_guard)
+		    {
+		        scrText("...");
+		        break;
+		    }
+		    global.inv_action_guard = true;
+			show_debug_message("DISCARD_YES called for " + item_id);
+		    inv_remove_id(item_id, 1);
+		    scrText("You threw away the " + def.name + ".");
+		break;
 
         case "DISCARD_NO":
             scrText("...");
