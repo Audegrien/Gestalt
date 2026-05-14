@@ -10,8 +10,8 @@
   "name":"custom_camera",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Globals",
+    "path":"folders/Objects/Globals.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -1,13 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"objPauser",
+  "%Name":"sprCursor",
   "eventList":[],
   "managed":true,
-  "name":"objPauser",
+  "name":"sprCursor",
   "overriddenProperties":[],
   "parent":{
-    "name":"Globals",
-    "path":"folders/Objects/Globals.yy",
+    "name":"Global",
+    "path":"folders/Sprites/Global.yy",
   },
   "parentObjectId":null,
   "persistent":false,
