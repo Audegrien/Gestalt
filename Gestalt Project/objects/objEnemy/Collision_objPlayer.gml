@@ -10,3 +10,5 @@ global.returnRoom = room;
 
 // Go to combat room
 room_goto(rmCombat);
+show_debug_message("COMBAT STARTED");
+show_debug_message("Room: " + string(room));

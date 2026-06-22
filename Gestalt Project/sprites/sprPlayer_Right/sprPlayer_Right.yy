@@ -32,8 +32,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Global",
-    "path":"folders/Sprites/Global.yy",
+    "name":"Unarmed",
+    "path":"folders/Sprites/Global/Player/Unarmed.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
