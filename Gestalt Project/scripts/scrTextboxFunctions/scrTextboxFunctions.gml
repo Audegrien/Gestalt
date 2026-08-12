@@ -1,8 +1,19 @@
+function scrSet_Defaults_For_Text()
+{
+	line_break_pos[0, page_number] = 999;
+	line_break_num[page_number] = 0;
+	line_break_offset[page_number] = 0;
+	
+}
+
 /// @param text
 function scrText(_text)
 {
+	scrSet_Defaults_For_Text(); 
+	
     text[page_number] = _text;
-    page_number++;
+    
+	page_number++;
 }
 
 /// @param option

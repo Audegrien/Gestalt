@@ -28,6 +28,61 @@ if setup == false
 			//get the x position for the textbox
 				//no character (center the textbox)
 				text_x_offset[p] = 22;
+				
+				//setting individual characters and finding where the line breaks should be
+				for (var c = 0; c < text_length[p]; c++)
+				{
+					var _char_pos = c+1;
+					//store individual characters in the char array
+					char[c, p] = string_char_at(text[p], _char_pos);
+					
+					//get current width of the line that we are typing
+					var _text_up_to_char = string_copy(text[p], 1, _char_pos);
+					var _current_text_w = string_width(_text_up_to_char) - string_width(char[c,p]);
+					
+					//get the last free space
+					if char[c,p] == "  " { last_free_space = _char_pos+1};
+					
+					//get the line breaks
+					if _current_text_w = line_break_offset[p] > line_width
+					{
+						line_break_pos[line_break_num[p], p] = last_free_space;
+						line_break_num[p]++;
+						var _text_up_to_last_space = string_copy( text[p], 1, last_free_space);
+						var _last_free_space_string = string_char_at(text[p], last_free_space);
+						line_break_offset[p] = string_width(_text_up_to_last_space) - string_width(_last_free_space_string);
+					}
+				}
+				
+				//getting each characters coordinates
+				for (var c = 0; c < text_length[p]; c++)
+				{
+					var _char_pos = c+1;
+					var _text_x = border; 
+					var _text_y = border;
+					//get current width of the line that we are typing
+					var _text_up_to_char = string_copy(text[p], 1, _char_pos);
+					var _current_text_w = string_width(_text_up_to_char) - string_width(char[c,p]);
+					var _text_line = 0;
+					
+					//compensate for string breaks
+					for (var lb = 0; lb < line_break_num[p]; lb++)
+					{
+						//if current looping character is after line break
+						if _char_pos >= line_break_pos[lb,p]
+						{
+							var _str_copy = string_copy(text[p], line_break_pos[lb,p], _char_pos-line_break_pos[lb,p]);
+							_current_text_w = string_width(_str_copy);
+							
+							//record the line that this character should be on
+							_text_line = lb+1; //+1 since it starts at 0
+						}
+					}
+					
+					//add to the x and y coordinates based on the new info
+					char_x[c, p] = _text_x + _current_text_w;
+					char_y[c,p] = _text_y + _text_line*line_sep;
+				}
 		}
 }
 
@@ -239,6 +294,7 @@ if (draw_char == text_length[page] && page == page_number - 1)
 // =====================================================================
 
 
+
 // Copy only the visible characters (typing effect)
 var _drawtext = string_copy(text[page], 1, draw_char);
 
@@ -264,10 +320,10 @@ matrix_set(matrix_world, m);
 
 
 // Draw wrapped dialogue text
-// NOTE: line spacing and width are divided by scale
-// so wrapping behaves correctly inside scaled space
-draw_text_ext(0, 0,_drawtext, line_sep / s, line_width / s);
-
-
-// Restore original transform
+// Draw visible characters
+for (var c = 0; c < floor(draw_char); c++)
+{
+    draw_text(char_x[c, page], char_y[c, page], char[c, page]);
+}
+// Restore original transform 
 matrix_set(matrix_world, m_old);

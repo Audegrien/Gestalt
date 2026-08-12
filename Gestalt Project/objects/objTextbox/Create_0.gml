@@ -14,16 +14,19 @@ txtb_img_spd = 0;
 
 //text
 page = 0;
-//page_number = 0;
+page_number = 0;
 text[0] = "";
 page_number = array_length(text);
 // make these REAL arrays so text_length[page] works
 text_length   = array_create(page_number, 0);
 text_x_offset = array_create(page_number, 0);
-
-//text_length = string_length(text[0]);
+text_length = string_length(text[0]);
+char[0, 0] = "";
+char_x[0,0] = 0;
+char_y[0,0] = 0;
 draw_char = 0;
 text_spd = 1;
+
 
 //Options
 option[0] = "";
@@ -32,3 +35,7 @@ option_pos = 0;
 option_number = 0;
 
 setup = false;
+
+//Effects
+scrSet_Defaults_For_Text();
+last_free_space = 0;
