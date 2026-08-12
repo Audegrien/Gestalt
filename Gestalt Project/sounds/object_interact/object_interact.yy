@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"object_interact",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.11217687,
+  "exportDir":"",
+  "name":"object_interact",
+  "parent":{
+    "name":"Misc",
+    "path":"folders/Audio/General/Misc.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"object_interact.wav",
+  "volume":1.0,
+}

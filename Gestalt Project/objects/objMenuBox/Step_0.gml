@@ -3,6 +3,9 @@ up_key = keyboard_check_pressed(vk_up);
 down_key = keyboard_check_pressed(vk_down);
 accept_key = keyboard_check_pressed(vk_space);
 
+if keyboard_check_pressed(vk_space) {audio_play_sound(sndSelect, 1, false);}
+if keyboard_check_pressed(vk_up) {audio_play_sound(sndMove, 1, false);}
+if keyboard_check_pressed(vk_down) {audio_play_sound(sndMove, 1, false);}
 //store number of options in current menu
 op_length = array_length(option[menu_level])
 
@@ -24,7 +27,7 @@ if accept_key {
 		{
 			
 			//start game
-			case 0: if !instance_exists(objWarp_1){var inst = instance_create_depth(0, 0, -999, objWarp_1)}; break;
+			case 0: if !instance_exists(objWarp_1){var inst = instance_create_depth(0, 0, -999, objWarp_1); audio_stop_sound(muTitleScreen);}; break;
 			//settings
 			case 1: menu_level = 1; break;
 			//quit game

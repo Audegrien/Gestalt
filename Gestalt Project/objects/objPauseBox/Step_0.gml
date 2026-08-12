@@ -9,6 +9,12 @@ right_key  = keyboard_check_pressed(vk_right);
 accept_key = keyboard_check_released(vk_space); // keep for menu 0/1
 back_key   = keyboard_check_pressed(vk_escape);
 
+if keyboard_check_pressed(vk_up){audio_play_sound(sndMove, 1, false);}
+if keyboard_check_pressed(vk_down){audio_play_sound(sndMove, 1, false);}
+if keyboard_check_pressed(vk_left){audio_play_sound(sndMove, 1, false);}
+if keyboard_check_pressed(vk_right){audio_play_sound(sndSelect, 1, false);}
+if keyboard_check_pressed(vk_space){audio_play_sound(sndSelect, 1, false);}
+if keyboard_check_pressed(vk_escape){audio_play_sound(sndSelect, 1, false);}
 // -------------------- GLOBAL SPACE LOCK --------------------
 if (!variable_global_exists("ui_lock_space")) global.ui_lock_space = false;
 

@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"sndLighter_Ignight_2",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.42997733,
+  "exportDir":"",
+  "name":"sndLighter_Ignight_2",
+  "parent":{
+    "name":"Lighter",
+    "path":"folders/Audio/General/Lighter.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sndLighter_Ignight_2.wav",
+  "volume":1.0,
+}

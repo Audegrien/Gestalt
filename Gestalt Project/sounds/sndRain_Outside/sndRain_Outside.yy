@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"sndRain_Outside",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":1,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":299.5026,
+  "exportDir":"",
+  "name":"sndRain_Outside",
+  "parent":{
+    "name":"Rain",
+    "path":"folders/Audio/General/Weather/Rain.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sndRain_Outside.wav",
+  "volume":0.18,
+}

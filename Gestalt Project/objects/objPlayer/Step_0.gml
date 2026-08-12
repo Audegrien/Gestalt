@@ -50,12 +50,20 @@ if (keyboard_check_pressed(vk_shift))
     // only allow turning ON if you have charge
     if (!flashlight_on && battery <= 0)
     {
-        // optional click sound
-        // audio_play_sound(sndClick, 1, false);
+
     }
     else
     {
         flashlight_on = !flashlight_on;
+		
+		if(flashlight_inst.enabled = false)
+		{
+			audio_play_sound(choose(sndLighter_Ignight_1, sndLighter_Ignight_2,sndLighter_Ignight_3,sndLighter_Ignight_4,sndLighter_Ignight_5,sndLighter_Ignight_6,sndLighter_Ignight_7), 8, false);
+		}
+		else
+		{
+		}
+	
     }
 }
 
