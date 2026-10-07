@@ -270,3 +270,15 @@ if (menu_level == 2)
 
     exit;
 }
+
+// -------------------- MENU 3 (Character) --------------------
+if (menu_level == 3)
+{
+    if (back_key)
+    {
+        menu_level = 0;
+        pos = 2;   // land back on "Character"
+        op_length = array_length(option[0]);
+    }
+    exit;
+}

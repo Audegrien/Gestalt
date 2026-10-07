@@ -27,8 +27,8 @@ battery       = global.battery;
 
 flashlight_inst = noone;
 
-hp_max = 100;
-hp = hp_max;
+//hp_max = 100;
+//hp = hp_max;
 
 scrInvInit();
 inv_add("pie", 1);
