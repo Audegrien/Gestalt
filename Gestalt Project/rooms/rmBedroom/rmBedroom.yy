@@ -138,7 +138,7 @@
     {"$GMRTileLayer":"","%Name":"Tiles_1_1","depth":600,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Tiles_1_1","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":30,"SerialiseWidth":40,"TileCompressedData":[
           -208,-2147483648,-10,0,-30,-2147483648,-10,0,-30,-2147483648,-10,0,-30,-2147483648,-10,0,-30,-2147483648,
           -10,0,-30,-2147483648,-10,0,-30,-2147483648,-11,0,-29,-2147483648,-11,0,-29,-2147483648,-10,0,-30,-2147483648,
-          -10,0,-31,-2147483648,-8,0,-34,-2147483648,4,0,14,14,0,-545,-2147483648,
+          -10,0,-31,-2147483648,-8,0,-34,-2147483648,4,0,14,14,0,-37,-2147483648,1,0,-507,-2147483648,
         ],"TileDataFormat":1,},"tilesetId":{"name":"tsHouseTiles","path":"tilesets/tsHouseTiles/tsHouseTiles.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
     {"$GMRTileLayer":"","%Name":"Tiles_1","depth":700,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Tiles_1","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":30,"SerialiseWidth":40,"TileCompressedData":[
           -208,-2147483648,-10,0,-28,-2147483648,2,0,-2147483648,-10,0,-29,-2147483648,-12,0,-29,-2147483648,-10,

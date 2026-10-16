@@ -9,6 +9,7 @@ show_debug_message("ADD pie -> " + string(inv_add("pie", 1)));
 show_debug_message("ADD bandage -> " + string(inv_add("bandage", 1)));
 show_debug_message("ADD morphine -> " + string(inv_add("morphine", 1)));
 show_debug_message("ADD Razor -> " + string(inv_add("razor", 1)));
+show_debug_message("ADD Fluid -> " + string(inv_add("mysteriousfluid", 1)));
 
 global.inv_action_guard = false;
 

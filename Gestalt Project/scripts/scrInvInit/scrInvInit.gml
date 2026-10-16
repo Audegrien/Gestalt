@@ -33,7 +33,7 @@ global.ItemDB.bandage = new ItemDef(
     false,
     function(p) {
         if (!instance_exists(p)) return false;
-        p.hp = clamp(global.hp + 1, 0, global.hp_max);
+        global.hp = clamp(global.hp + 1, 0, global.hp_max);
         return true;
     }
 );
@@ -44,17 +44,29 @@ global.ItemDB.morphine = new ItemDef(
     true,
     function(p) {
         if (!instance_exists(p)) return false;
-        p.hp = clamp(global.hp + 10, 0, global.hp_max);
+        global.hp = clamp(global.hp + 10, 0, global.hp_max);
         return true;
     }
 );
-global.ItemDB.bandage = new ItemDef(
+
+global.ItemDB.razor = new ItemDef(
     "Razor",
     "A old razor....",
     false,
     function(p) {
         if (!instance_exists(p)) return false;
-        p.hp = clamp(global.hp - 20, 0, global.hp_max);
+        global.hp = clamp(global.hp - 20, 0, global.hp_max);
         return true;
     }
+);
+
+global.ItemDB.mysteriousfluid = new ItemDef(
+	"Mysterious Fluid",
+	"A vial filled with a murky white fluid... Said to bring new life to the one who uses it.",
+	true,
+	function(p){
+		if (!instance_exists(p)) return false;
+        global.hp = global.hp_max;
+        return true;
+	}
 );

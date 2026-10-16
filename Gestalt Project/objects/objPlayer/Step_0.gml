@@ -1,3 +1,8 @@
+// While the combat room is active, the overworld player does nothing at all:
+// no movement, no flashlight, no pause menu.
+// "exit" means "stop running the rest of this event for this frame".
+if (room == rmCombat) exit;
+
 //Creates the Integers for whether a key is being pressed
 right_key = keyboard_check(vk_right);
 left_key = keyboard_check(vk_left);
