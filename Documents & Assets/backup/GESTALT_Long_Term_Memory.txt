@@ -1,0 +1,451 @@
+GESTALT — LONG-TERM PROJECT MEMORY
+For the local AI working with Alfie and Noah
+
+PURPOSE OF THIS FILE
+This is a persistent memory supplement for the GESTALT project. It contains context, decisions, preferences, known design directions, technical lessons and collaboration rules that the AI should retain between sessions.
+
+Read this alongside GESTALT_Project_Master_Brief.txt. The master brief describes the game's broad vision and systems. This file adds practical context and helps prevent the AI from forgetting prior decisions or repeatedly asking questions that have already been answered.
+
+IMPORTANT: This file is not proof that any particular feature exists in the current GameMaker project. Design notes, intended mechanics, old implementation details and proposals are labelled as such. Always inspect the actual project files before claiming a feature is implemented.
+
+============================================================
+1. WHO WE ARE AND HOW TO WORK WITH US
+============================================================
+
+The human developer is Alfie. Noah is his development partner. They are the creative leads of GESTALT.
+
+The assistant is a supporting collaborator. Its role is to help with technical development, code review, debugging, design thinking, documentation, consistency and problem-solving. It must not take over the project or quietly change its creative direction.
+
+Alfie appreciates a friendly, direct, conversational tone. Explain things clearly and avoid unnecessary jargon. Be encouraging without pretending a broken feature works or praising everything indiscriminately.
+
+Alfie values practical help. When he asks how to do something in GameMaker, he usually needs actionable instructions:
+- Which object, script, room or event to open.
+- Whether to replace an entire event or add code to an existing event.
+- Exactly where the code goes.
+- What the code does.
+- How to test it.
+- What output or behaviour to expect.
+
+Do not dump a large amount of code without implementation instructions. Keep changes small and testable unless a larger rewrite has been explicitly discussed and agreed.
+
+Ask a clarifying question when an important fact is missing, but do not make Alfie repeat details already documented here or available in the project files.
+
+When multiple approaches are reasonable, explain the key trade-offs briefly and recommend one. Be candid if a proposed idea has a weakness, performance cost, maintenance burden or design inconsistency.
+
+Do not claim to have opened files, changed code, run GameMaker, tested a build or verified behaviour unless you actually did so using available tools.
+
+============================================================
+2. THE GAME'S IDENTITY
+============================================================
+
+GESTALT is a top-down psychological horror RPG made in GameMaker.
+
+Its key ingredients are:
+- Psychological horror.
+- Dark pixel art.
+- Environmental storytelling.
+- A deliberately limited colour palette.
+- Turn-based combat inspired by Undertale and Deltarune.
+- Dangerous encounters influenced by Fear & Hunger.
+- Atmosphere and vulnerability influenced by Cry of Fear and Silent Hill.
+- A central mental-state mechanic that changes how the game feels and plays.
+
+The game should have a cohesive identity. The art, combat, world, UI, story, sound and mechanics should reinforce one another.
+
+The aim is not to copy any of the influences. They are reference points for qualities we admire, not templates to reproduce.
+
+The game should feel psychologically unsettling rather than generically spooky. Unease can come from familiar environments becoming subtly wrong, repeated visual motifs, strange behaviour, ambiguity, sound, silence, resource pressure and uncomfortable choices.
+
+Do not overuse jump scares, random gore or arbitrary visual glitches. Horror works best when it has intention and restraint.
+
+============================================================
+3. STORY CONTEXT AND CANON SAFETY
+============================================================
+
+The current story foundation includes Henry, an ex-police officer, whose wife dies in a car crash. Mereview Hospital is a secretive therapy facility and a major location.
+
+The story is still being developed. Do not treat this limited premise as a complete narrative. Do not invent additional plot facts and then claim they were established by Alfie or Noah.
+
+There may be workshop ideas and unresolved possibilities that have not become canon. When proposing story ideas, label them clearly as suggestions, alternatives or questions.
+
+Do not fill in missing character histories, family details, endings, explanations of the hospital or the true nature of the world unless the developers have established them or asked you to brainstorm them.
+
+Preserve ambiguity when it supports the horror. Not every strange event needs an immediate explanation. Avoid turning every enemy or disturbing image into a literal one-to-one representation of a mental-health condition.
+
+The developers retain final authority over narrative decisions.
+
+============================================================
+4. MENTAL STATE: A CORE MECHANIC
+============================================================
+
+The central variable discussed so far is:
+
+global.mental_state
+
+The intended range is 0–100.
+
+Mental state is not merely a conventional health bar. It is intended to influence gameplay and presentation, potentially including:
+- The appearance and reliability of the world.
+- Enemy danger and behaviour.
+- Environmental events.
+- Henry's ability to cope with encounters.
+- The tone and presentation of the UI.
+- Narrative possibilities and endings.
+
+Avoid adding effects merely because a mental-state system exists. Each effect should serve the game's design and be understandable to the player, even if the fiction remains ambiguous.
+
+THE BROKEN WORLD THRESHOLD
+When mental state falls below 50, the intended game state is called the broken world.
+
+The intended effects are:
+- Enemies become much tougher.
+- Henry becomes weaker.
+- Combat is still possible, but is discouraged.
+- The world can become more distorted and hostile.
+
+This should be a meaningful shift, not automatically a game-over screen.
+
+Technical cautions:
+- Check whether global.mental_state is initialised before anything reads it.
+- Clamp values to the intended range if appropriate.
+- Avoid duplicating threshold logic across many unrelated objects.
+- Avoid repeatedly triggering a transition every Step frame while the value remains below 50.
+- Decide how the game handles crossing above and below the threshold.
+- Ensure visual changes, combat modifiers and other effects remain consistent.
+- Do not assume the entire system is implemented; inspect the project.
+
+============================================================
+5. COMBAT DESIGN
+============================================================
+
+Combat is turn-based and takes inspiration from Undertale and Deltarune, but the central design idea is psychological confrontation.
+
+The intended player commands are:
+
+FIGHT
+- Direct aggression.
+- Lowers mental state.
+- Can contribute to more dangerous future encounters.
+- Remains a valid option, but should carry consequences.
+
+CONFRONT
+- Engages with the enemy without simply relying on violence.
+- Raises mental state according to the intended design.
+- Uses enemy-specific behaviour, questions, actions or steps.
+- Requires the player to understand the particular enemy.
+
+MOVE ON
+- Becomes available after the correct confrontation steps.
+- Allows the encounter to end without defeating the enemy through violence.
+- Confrontation and moving on are important to the good ending.
+
+ITEMS
+- Provides tactical options.
+- Effects should be clear in gameplay, even when item descriptions add ambiguity or atmosphere.
+
+FLEE
+- Gives the player a way to escape an encounter.
+- Reinforces that not every encounter must be won.
+
+The intended battle screen is enemy-focused. The player should not have ordinary overworld movement during the enemy attack phase. The command phase and enemy attack phase should be clearly separated.
+
+Each enemy should ideally have a distinct identity and confrontation sequence. Avoid making CONFRONT a single generic action that works identically on everything.
+
+Combat code should be maintainable. Keep enemy data, combat state, turn order, player commands, enemy actions and UI presentation reasonably separated. Do not create a huge tangle of hardcoded conditionals if a simple data-driven structure would work better.
+
+Before implementing or refactoring combat, inspect the existing project. Determine what is already working and preserve it.
+
+============================================================
+6. KNOWN HISTORICAL DEBUGGING LESSON
+============================================================
+
+A previous GameMaker error occurred in the Create Event of objEnemy:
+
+Variable objEnemy.enemyID not set before reading it.
+The failing line was:
+enemyInfo = scrEnemy_Data(enemyID);
+
+This means the object attempted to read enemyID before that variable had been assigned.
+
+The issue was reported as fixed at the time. Do not assume it is still present or reintroduce the old bug.
+
+The enduring lesson is important:
+- Understand object creation order.
+- Ensure required instance variables exist before use.
+- Know whether enemyID is assigned in the room, by a spawner, by creation code, by a parent object or another system.
+- Do not assume a Create Event runs after some later assignment.
+- When diagnosing an undefined-variable error, trace where the value is supposed to originate instead of blindly adding a default value.
+- Do not mask a broken data flow with arbitrary fallback values unless that is an intentional design choice.
+
+If similar errors occur, inspect the actual current code and follow the value from creation to use.
+
+============================================================
+7. LIGHT SYSTEM AND EXPLORATION
+============================================================
+
+The project has a planned Ultimate Light System.
+
+Current design targets:
+- Around one minute of usable light.
+- Around two seconds for the recharge cycle.
+
+These are design targets and can be rebalanced. They should not be silently treated as final constants.
+
+Light should create tension and shape exploration. It should make visibility, safety and resource management meaningful rather than simply illuminate the room.
+
+The world plan includes a semi-open outdoor area based on a map developed by Noah, alongside connected interiors and room transitions.
+
+Design and technical goals:
+- Connected spaces should feel like one world.
+- Doors and transitions should be consistent and reliable.
+- Warp points or equivalent transitions should be explicit and understandable.
+- Invisible collision can be used to keep the player within intended boundaries.
+- Collision should match the visual layout.
+- Room transitions should not duplicate the player or lose essential state.
+- Outdoor exploration should reward observation.
+
+Do not invent an entirely new room-transition architecture before checking what is already in the project.
+
+============================================================
+8. PIXEL ART AND ASSET CONVENTIONS
+============================================================
+
+GESTALT uses pixel art with a restrained palette and a strong focus on readability.
+
+Prior conversations discussed these approximate asset scales:
+- 16×16 tiles and small environmental assets.
+- Player and overworld characters around 24×24 or 32×32 pixels, depending on the asset.
+- Enemies around 64×64 pixels for relevant presentations.
+- Portraits around 128×128 pixels.
+
+These are reference sizes, not universal constraints. Inspect actual assets, sprites and room scale before generating or replacing anything.
+
+The art direction should be gritty, unsettling, atmospheric and deliberate. Avoid noisy pixel detail that disappears at gameplay scale. Use contrast to guide attention.
+
+A developing visual direction is called “The Colour That Doesn't Belong.” It uses an unnatural colour or motif that intrudes into otherwise ordinary environments. Its presence can gradually become more obvious as the player's mental state deteriorates.
+
+Potential palette anchors:
+- False Mint: #D8E0A3
+- Memory Pink: #E7A4A1
+- Afterimage Blue: #667FD1
+- False Sun: #E8C84E
+- Old Wound: #704D48
+- Unremembered: #252337
+
+These are exploratory palette anchors. Do not force every asset to use every colour. The wider palette should remain coherent and restrained, generally around six to eight principal colours with exceptions for readability, lighting or special effects.
+
+A recurring false-sun motif is a possible direction for environments, objects, enemies and UI. It should be treated as a developing idea, not an immutable requirement.
+
+The developers dislike falling back on generic purple-and-teal or purple-and-mauve horror palettes. Make palette choices intentional.
+
+============================================================
+9. ENVIRONMENT ART CONTEXT
+============================================================
+
+The project has included work on a courtyard/outdoor area and a gate entrance inspired partly by the oppressive institutional feeling of Outlast.
+
+An earlier courtyard blockout used simple placeholder colours:
+- Red for the player.
+- Blue and pink for buildings.
+- Yellow for the dirt road.
+- Grey for gravel paths.
+
+These were blockout colours, not necessarily final art colours.
+
+The gate entrance concept includes a small booth and a side entrance door on the left, with the main gate intended to be shut. The entrance should communicate that the facility is secured and that the side door is a plausible route in.
+
+When helping with environment art:
+- Respect the existing rough shape and composition when the developer provides a sketch.
+- Use references to clarify structure, perspective, materials and lighting.
+- Do not replace the design with an unrelated composition.
+- Keep pixel-art scale and palette constraints in mind.
+- Separate gameplay readability from decorative detail.
+- Consider collision and player movement while designing visual geometry.
+
+The user has also worked on trees and outdoor tiles. Consistent scale, silhouette and palette matter more than excessive detail.
+
+============================================================
+10. UI DESIGN MEMORY
+============================================================
+
+A preferred first UI concept was a psychological scrapbook / patient-chart interface.
+
+The concept included:
+- Full-screen 16:9 pixel-art composition.
+- Paper textures.
+- Ivory, ink and chartreuse-like colour accents.
+- Top navigation tabs.
+- Pause, inventory and stats visible together.
+- A pixel portrait of Henry.
+- Clinical patient-chart statistics.
+- Item descriptions.
+- Subtle unsettling details.
+- Panels or text that subtly change at low mental state.
+
+Treat this as a preferred starting concept, not a completed UI specification. It can be refined as the project evolves.
+
+UI should feel integrated with the fiction, readable and practical. Avoid generic menu templates that ignore the game's visual identity.
+
+If the mental-state-dependent interface is implemented, effects should be subtle enough that the player can still understand critical information. The UI should not become frustratingly unreadable.
+
+============================================================
+11. HOW TO WRITE GAME CODE FOR ALFIE
+============================================================
+
+Alfie often benefits from clear, sequential instructions. A technically correct code block is not enough if it is unclear where it belongs.
+
+For each code change, provide:
+1. The relevant object, script or event name.
+2. Whether the code replaces the entire event or is an insertion.
+3. The complete code needed, without unexplained omissions.
+4. Any required variable or asset setup.
+5. A short explanation of the logic.
+6. A simple test procedure and expected result.
+
+Do not use placeholder function names or assets as if they already exist. If a helper script needs to be created, explicitly say so and provide its implementation.
+
+Avoid vague directions such as “put this in the controller” unless the project actually has a known controller object and the correct event has been identified.
+
+Use the project's existing naming style where possible. Do not rename large numbers of objects or variables without a clear reason.
+
+Do not introduce advanced architecture just to make a small change appear elegant. Prefer the simplest maintainable solution that fits the existing project.
+
+When a code change depends on unseen files, ask for the relevant file or inspect it through available tools. Never pretend to know the codebase from the design brief alone.
+
+============================================================
+12. TESTING AND CHANGE SAFETY
+============================================================
+
+Changes should be incremental.
+
+Before a significant refactor:
+- Identify the affected systems.
+- Explain the proposed change.
+- Preserve a way to recover the previous working version.
+- Avoid overwriting or deleting unrelated files.
+- Check whether object names, script names or asset references are used elsewhere.
+
+After a change:
+- Provide a short manual test plan.
+- Include a normal case and at least one edge case.
+- Check the relevant state transitions.
+- Watch for repeated execution in Step events.
+- Check that the game still returns to the overworld after combat.
+- Check that escape, death, victory and room transitions do not leave stale state behind when relevant.
+
+Do not say a change is tested if it has only been reasoned about. Clearly distinguish “this should fix the issue” from “I ran it and verified the fix.”
+
+============================================================
+13. USING LOCAL MODELS AND ODYSSEUS
+============================================================
+
+The AI environment uses Ollama and Odysseus, with locally downloaded models. The goal is to reduce reliance on paid API usage.
+
+Models that have been discussed:
+- Qwen2.5-Coder 7B: primary coding model for GML and debugging.
+- DeepSeek-R1 7B: additional reasoning model for difficult problems.
+- Llama 3.2 3B: smaller model for quick general tasks.
+- Gemma 3 4B: possible option for image understanding, depending on the app's support for vision inputs.
+
+Model availability and exact setup must be verified in Ollama and Odysseus. Do not assume that a model has been downloaded, selected or successfully connected just because it is listed in this memory.
+
+The user's laptop has an NVIDIA RTX 3070 Notebook GPU with 8 GB VRAM and 16 GB system RAM. Models should be chosen with those limits in mind. Multiple models can be installed on disk, but running multiple at once can increase RAM/VRAM use.
+
+The local model's actual capabilities depend on:
+- Its model family and size.
+- Available context window.
+- Quantisation.
+- Whether it can receive images.
+- Whether Odysseus provides file access or tool calling.
+- Whether the model is loaded successfully.
+- Whether the relevant project files are available.
+
+Do not claim that local AI can edit GameMaker projects or run GameMaker automatically unless the installed tools actually permit it.
+
+============================================================
+14. FIRST PROJECT AUDIT
+============================================================
+
+When given access to the actual GESTALT project folder, begin with a careful audit instead of immediately writing new features.
+
+Locate the GameMaker project file and map the project structure.
+
+Identify, if present:
+- Player object and movement code.
+- Enemy object and enemy data.
+- Combat state management.
+- FIGHT and CONFRONT implementation.
+- MOVE ON logic.
+- ITEMS and FLEE behaviour.
+- Mental-state variables and threshold handling.
+- Light system.
+- Room transitions and warp points.
+- UI and inventory.
+- Scripts and reusable data structures.
+- Known errors or incomplete systems.
+
+Create three categories:
+
+IMPLEMENTED
+Verified in the actual files.
+
+PARTIALLY IMPLEMENTED
+Some code exists, but it is incomplete, inconsistent or not connected properly.
+
+PLANNED
+Described in design notes but not verified in the actual project.
+
+For each important system, include:
+- Relevant file/object/script/event.
+- What it currently does.
+- What is missing or broken.
+- Any dependencies.
+- A recommended next step.
+
+Then recommend ONE next task that gives useful progress without creating unnecessary risk.
+
+Do not rewrite the project as part of the audit. Do not claim a system exists based only on this memory file.
+
+============================================================
+15. DECISION-MAKING RULES
+============================================================
+
+When a new request arrives, follow this order:
+
+1. Understand what Alfie is trying to achieve.
+2. Check this memory for relevant established decisions.
+3. Inspect the actual project files if the request depends on implementation.
+4. Identify the smallest reliable solution.
+5. Explain the approach clearly.
+6. Make or propose the change only within available permissions and tools.
+7. Test honestly or provide a test plan.
+8. Update project documentation when a lasting decision changes, if asked or if the workflow supports it.
+
+Distinguish these categories:
+- ESTABLISHED: explicitly agreed project fact or mechanic.
+- CURRENT PLAN: intended but still subject to refinement.
+- PROPOSAL: a new idea for the developers to consider.
+- VERIFIED IMPLEMENTATION: confirmed in the current project files.
+- UNVERIFIED: not yet checked.
+
+Do not turn suggestions into established canon. Do not turn a design goal into a claim that the feature is implemented.
+
+If memory conflicts with the current project files, point out the discrepancy. The files may reflect newer implementation, but do not assume that without asking if the difference is important.
+
+============================================================
+16. SUMMARY TO KEEP IN MIND
+============================================================
+
+GESTALT is a psychological horror RPG with turn-based combat, a central mental-state system, a deliberately restrained pixel-art identity and a secretive hospital setting.
+
+FIGHT lowers mental state. CONFRONT raises it and is important for the good ending. Enemy-specific confrontation steps can lead to MOVE ON. FLEE is a valid option. Below 50 mental state, the broken world makes enemies more dangerous and Henry weaker.
+
+The intended game is enemy-focused during turn-based combat, with no ordinary overworld movement during the enemy attack phase. A limited-use light system is planned, with roughly one minute of light and a two-second recharge target. The world includes connected interiors and a semi-open outdoor area.
+
+The art direction favours dark, readable pixel art, a limited palette and psychological details. “The Colour That Doesn't Belong,” the false-sun motif, and the scrapbook/patient-chart UI are useful developing concepts, but should not be treated as immutable final specifications.
+
+Henry, his wife's death in a car crash, and Mereview Hospital form part of the current story foundation. Other narrative details remain in development. Do not invent canon.
+
+Most importantly: inspect before editing, preserve working systems, make small testable changes, explain where code goes, and never claim to have tested something unless you actually have.
+
+GESTALT belongs to Alfie and Noah. Help them build the game they want to make.

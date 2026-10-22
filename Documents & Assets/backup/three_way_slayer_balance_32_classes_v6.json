@@ -1,0 +1,921 @@
+{
+  "version": 1,
+  "name": "Three Way Slayer Balance",
+  "base_map": {
+    "id": 320,
+    "stem": "guardian",
+    "title": "Guardian"
+  },
+  "hosting": {
+    "name": "Project Reclaimer game",
+    "host_name": "",
+    "visibility": "Local",
+    "hosting": "Dedicated",
+    "public_address": "",
+    "automatic_port_mapping": true,
+    "game_port": 11774,
+    "discovery_port": 11775,
+    "voice_enabled": true,
+    "text_chat_enabled": true,
+    "hidden": false,
+    "password": "",
+    "max_players": 16,
+    "share_mods": false,
+    "share_rate": 20
+  },
+  "mode": "Slayer",
+  "rules": {
+    "score_to_win": 500,
+    "kill_points": 1,
+    "death_points": 0,
+    "suicide_points": 0,
+    "betrayal_points": -1
+  },
+  "script": {
+    "version": 2,
+    "name": "Three Way Slayer",
+    "initial": [],
+    "on_spawn": [],
+    "on_kill": [],
+    "on_death": [],
+    "logic": {
+      "deployment": {
+        "title": "Three Way Slayer Balance",
+        "teams": [
+          "Flood",
+          "Covenant",
+          "UNSC"
+        ],
+        "classes": [
+          {
+            "name": "brute combat form",
+            "description": "Flood Brute with a Spiker; durable close-to-mid-range fighter.",
+            "team": 0,
+            "cost": 25,
+            "biped": "flood_brute",
+            "camera": "third_person",
+            "primary": "spiker",
+            "grenades": [
+              0,
+              2,
+              0,
+              0
+            ],
+            "traits": {
+              "damage": 10,
+              "gravity": 1,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 6,
+              "shields": 1,
+              "speed": 10,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 1.15
+          },
+          {
+            "name": "elite combat form",
+            "description": "Flood Elite armed with a Plasma Rifle.",
+            "team": 0,
+            "cost": 25,
+            "biped": "flood_elite",
+            "camera": "third_person",
+            "primary": "plasma_rifle",
+            "grenades": [
+              0,
+              2,
+              0,
+              0
+            ],
+            "traits": {
+              "damage": 10,
+              "gravity": 1,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 4,
+              "shields": 2,
+              "speed": 10,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 1.15
+          },
+          {
+            "name": "human combat form",
+            "description": "Flood human armed with an Assault Rifle.",
+            "team": 0,
+            "cost": 25,
+            "biped": "flood_human",
+            "camera": "third_person",
+            "primary": "assault_rifle",
+            "grenades": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "traits": {
+              "damage": 8,
+              "gravity": 1,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 6,
+              "shields": 1,
+              "speed": 10,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 1.15
+          },
+          {
+            "name": "elite combat needler",
+            "description": "Flood Elite armed with a Needler.",
+            "team": 0,
+            "cost": 50,
+            "biped": "flood_elite",
+            "camera": "third_person",
+            "primary": "needler",
+            "grenades": [
+              0,
+              2,
+              0,
+              0
+            ],
+            "traits": {
+              "gravity": 1,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 4,
+              "shields": 2,
+              "speed": 10,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 1.15
+          },
+          {
+            "name": "Human Combat Form - Battle Rifle",
+            "description": "Flood human armed with a Battle Rifle for mid-range fire.",
+            "team": 0,
+            "cost": 50,
+            "biped": "flood_human",
+            "camera": "third_person",
+            "primary": "battle_rifle",
+            "grenades": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "traits": {
+              "damage": 8,
+              "gravity": 1,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 6,
+              "shields": 1,
+              "speed": 10,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 1.15
+          },
+          {
+            "name": "pure form",
+            "description": "Fast, camouflaged Stalker-type Flood form; no starting weapon listed.",
+            "team": 0,
+            "cost": 175,
+            "biped": "flood_stalker",
+            "camera": "third_person",
+            "grenades": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "traits": {
+              "camouflage": 2,
+              "damage": 12,
+              "gravity": 1,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 6,
+              "shields": 2,
+              "speed": 10,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 1.25
+          },
+          {
+            "name": "Ranged Form",
+            "description": "Ranged Flood form; native projectile attack requires in-game testing.",
+            "team": 0,
+            "cost": 225,
+            "biped": "flood_ranged",
+            "camera": "third_person",
+            "grenades": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "traits": {
+              "damage": 10,
+              "gravity": 1,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 7,
+              "shields": 1,
+              "speed": 7,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 2.5
+          },
+          {
+            "name": "Brute Combat Form - Rocket Launcher",
+            "description": "Flood Brute armed with a Rocket Launcher for heavy explosive fire.",
+            "team": 0,
+            "cost": 275,
+            "biped": "flood_brute",
+            "camera": "third_person",
+            "primary": "rocket_launcher",
+            "grenades": [
+              0,
+              2,
+              0,
+              0
+            ],
+            "traits": {
+              "damage": 10,
+              "gravity": 1,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 6,
+              "shields": 1,
+              "speed": 10,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 1.15
+          },
+          {
+            "name": "tank",
+            "description": "Heavy Flood form with very high health and damage resistance.",
+            "team": 0,
+            "cost": 275,
+            "biped": "flood_tank",
+            "camera": "third_person",
+            "grenades": [
+              0,
+              2,
+              0,
+              0
+            ],
+            "traits": {
+              "damage": 12,
+              "gravity": 1,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 9,
+              "shields": 1,
+              "speed": 10,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 6.0
+          },
+          {
+            "name": "Grunt Minor",
+            "description": "Free Grunt with a Plasma Pistol.",
+            "team": 1,
+            "cost": 0,
+            "biped": "grunt",
+            "camera": "third_person",
+            "model_variant": "minor",
+            "primary": "plasma_pistol",
+            "grenades": [
+              0,
+              2,
+              0,
+              0
+            ],
+            "traits": {
+              "headshots": 1,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 8,
+              "shields": 1,
+              "speed": 10,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 1.15
+          },
+          {
+            "name": "Jackal Shieldbearer",
+            "description": "Free Jackal armed with a Plasma Pistol.",
+            "team": 1,
+            "cost": 0,
+            "biped": "jackal",
+            "camera": "third_person",
+            "model_variant": "minor",
+            "primary": "plasma_pistol",
+            "grenades": [
+              0,
+              2,
+              0,
+              0
+            ],
+            "traits": {
+              "damage": 10,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 8,
+              "shields": 1,
+              "speed": 8,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 1.15
+          },
+          {
+            "name": "Grunt Major",
+            "description": "Grunt Major with a Needler and increased health.",
+            "team": 1,
+            "cost": 25,
+            "biped": "grunt",
+            "camera": "third_person",
+            "model_variant": "major",
+            "primary": "needler",
+            "grenades": [
+              0,
+              2,
+              0,
+              0
+            ],
+            "traits": {
+              "headshots": 1,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 8,
+              "shields": 1,
+              "speed": 10,
+              "vehicles": 3
+            },
+            "health": 1.3,
+            "max_active": 0
+          },
+          {
+            "name": "Jackal Major",
+            "description": "Jackal Major armed with a Needler.",
+            "team": 1,
+            "cost": 25,
+            "biped": "jackal",
+            "camera": "third_person",
+            "model_variant": "major",
+            "primary": "needler",
+            "grenades": [
+              0,
+              2,
+              0,
+              0
+            ],
+            "traits": {
+              "damage": 10,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 7,
+              "shields": 1,
+              "speed": 9,
+              "vehicles": 3
+            },
+            "health": 1.15,
+            "max_active": 0
+          },
+          {
+            "name": "Brute Minor",
+            "description": "Brute Minor with a Mauler and Spiker.",
+            "team": 1,
+            "cost": 50,
+            "biped": "brute",
+            "camera": "third_person",
+            "model_variant": "minor",
+            "primary": "mauler",
+            "secondary": "spiker",
+            "grenades": [
+              0,
+              2,
+              0,
+              0
+            ],
+            "traits": {
+              "headshots": 1,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 7,
+              "shields": 1,
+              "speed": 7,
+              "vehicles": 3
+            },
+            "health": 1.4,
+            "max_active": 0
+          },
+          {
+            "name": "Grunt Heavy",
+            "description": "Heavy Grunt with a Fuel Rod Gun and Plasma Pistol.",
+            "team": 1,
+            "cost": 75,
+            "biped": "grunt",
+            "camera": "third_person",
+            "model_variant": "heavy",
+            "primary": "fuel_rod_gun",
+            "secondary": "plasma_pistol",
+            "grenades": [
+              0,
+              2,
+              0,
+              0
+            ],
+            "traits": {
+              "headshots": 1,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 8,
+              "shields": 1,
+              "speed": 8,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 1.15
+          },
+          {
+            "name": "Brute Captain",
+            "description": "Durable Brute Captain with a Brute Shot and Spiker.",
+            "team": 1,
+            "cost": 100,
+            "biped": "brute",
+            "camera": "third_person",
+            "model_variant": "captain",
+            "primary": "brute_shot",
+            "secondary": "spiker",
+            "grenades": [
+              0,
+              0,
+              2,
+              0
+            ],
+            "traits": {
+              "headshots": 1,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 6,
+              "shields": 2,
+              "speed": 8,
+              "vehicles": 3
+            },
+            "health": 3.5,
+            "max_active": 0
+          },
+          {
+            "name": "Elite Major",
+            "description": "Elite Major with an Energy Sword, Carbine and stronger shields.",
+            "team": 1,
+            "cost": 200,
+            "biped": "elite_warrior",
+            "camera": "third_person",
+            "model_variant": "major_scl",
+            "primary": "energy_sword",
+            "secondary": "carbine",
+            "grenades": [
+              0,
+              2,
+              0,
+              0
+            ],
+            "traits": {
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 6,
+              "shields": 3,
+              "speed": 6,
+              "vehicles": 3
+            },
+            "max_active": 6,
+            "health": 1.25
+          },
+          {
+            "name": "Spec Ops Elite - Plasma Rifle",
+            "description": "Spec Ops Elite with a Plasma Rifle and Energy Sword; limit two.",
+            "team": 1,
+            "cost": 275,
+            "biped": "elite_warrior",
+            "camera": "third_person",
+            "model_variant": "spec_ops_scl",
+            "primary": "plasma_rifle",
+            "secondary": "energy_sword",
+            "grenades": [
+              0,
+              2,
+              0,
+              0
+            ],
+            "traits": {
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 6,
+              "shields": 3,
+              "speed": 6,
+              "vehicles": 3
+            },
+            "health": 1.35,
+            "max_active": 2
+          },
+          {
+            "name": "Hunter",
+            "description": "Heavy Hunter with a Hunter Cannon; one active at a time.",
+            "team": 1,
+            "cost": 300,
+            "biped": "hunter",
+            "model_variant": "minor",
+            "primary": "hunter_cannon",
+            "grenades": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "traits": {
+              "damage": 8,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 4,
+              "shields": 1,
+              "speed": 4,
+              "vehicles": 1
+            },
+            "health": 4.5,
+            "max_active": 1,
+            "camera": "third_person"
+          },
+          {
+            "name": "Spec Ops Elite - Beam Rifle",
+            "description": "Spec Ops Elite with a Beam Rifle and Energy Sword; limit one.",
+            "team": 1,
+            "cost": 325,
+            "biped": "elite_warrior",
+            "camera": "third_person",
+            "model_variant": "spec_ops_scl",
+            "primary": "beam_rifle",
+            "secondary": "energy_sword",
+            "grenades": [
+              0,
+              2,
+              0,
+              0
+            ],
+            "traits": {
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 6,
+              "shields": 3,
+              "speed": 6,
+              "vehicles": 3
+            },
+            "health": 1.25,
+            "max_active": 1
+          },
+          {
+            "name": "Spec Ops Elite - Fuel Rod",
+            "description": "Spec Ops Elite with a Fuel Rod Gun and Energy Sword; limit one.",
+            "team": 1,
+            "cost": 350,
+            "biped": "elite_warrior",
+            "camera": "third_person",
+            "model_variant": "spec_ops_scl",
+            "primary": "fuel_rod_gun",
+            "secondary": "energy_sword",
+            "grenades": [
+              0,
+              2,
+              0,
+              0
+            ],
+            "traits": {
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 6,
+              "shields": 3,
+              "speed": 6,
+              "vehicles": 3
+            },
+            "health": 1.35,
+            "max_active": 1
+          },
+          {
+            "name": "Marine Breacher",
+            "description": "Marine armed with a Magnum and Shotgun for close combat.",
+            "team": 2,
+            "cost": 0,
+            "biped": "marine",
+            "camera": "third_person",
+            "model_variant": "ma2",
+            "primary": "magnum",
+            "secondary": "shotgun",
+            "grenades": [
+              2,
+              0,
+              0,
+              0
+            ],
+            "traits": {
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 7,
+              "shields": 1,
+              "speed": 3,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 1.15
+          },
+          {
+            "name": "Marine Rifleman",
+            "description": "Free UNSC Marine armed with an Assault Rifle.",
+            "team": 2,
+            "cost": 0,
+            "biped": "marine",
+            "camera": "third_person",
+            "model_variant": "ma1",
+            "primary": "assault_rifle",
+            "grenades": [
+              2,
+              0,
+              0,
+              0
+            ],
+            "traits": {
+              "damage": 8,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 5,
+              "shields": 1,
+              "speed": 6,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 1.15
+          },
+          {
+            "name": "ODST Assault Rifle",
+            "description": "ODST with an Assault Rifle and Automag; increased health.",
+            "team": 2,
+            "cost": 50,
+            "biped": "odst",
+            "camera": "third_person",
+            "model_variant": "captain",
+            "primary": "assault_rifle",
+            "secondary": "automag",
+            "grenades": [
+              2,
+              0,
+              0,
+              0
+            ],
+            "traits": {
+              "damage": 8,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 7,
+              "shields": 1,
+              "speed": 8,
+              "vehicles": 3
+            },
+            "health": 1.25,
+            "max_active": 0
+          },
+          {
+            "name": "sentinel",
+            "description": "Sentinel armed with a Sentinel Beam.",
+            "team": 2,
+            "cost": 50,
+            "biped": "sentinel",
+            "camera": "third_person",
+            "primary": "sentinel_beam",
+            "grenades": [
+              0,
+              2,
+              0,
+              0
+            ],
+            "traits": {
+              "damage": 8,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 5,
+              "shields": 2,
+              "speed": 8,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 1.15
+          },
+          {
+            "name": "ODST Shotgun",
+            "description": "ODST with a Shotgun and Automag; increased health.",
+            "team": 2,
+            "cost": 75,
+            "biped": "odst",
+            "camera": "third_person",
+            "model_variant": "captain",
+            "primary": "shotgun",
+            "secondary": "automag",
+            "grenades": [
+              2,
+              0,
+              0,
+              0
+            ],
+            "traits": {
+              "damage": 8,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 7,
+              "shields": 1,
+              "speed": 8,
+              "vehicles": 3
+            },
+            "health": 1.25,
+            "max_active": 0
+          },
+          {
+            "name": "ODST Recon",
+            "description": "Mobile ODST armed with a silenced SMG and Automag.",
+            "team": 2,
+            "cost": 100,
+            "biped": "odst",
+            "camera": "third_person",
+            "primary": "smg_silenced",
+            "secondary": "automag",
+            "grenades": [
+              2,
+              0,
+              0,
+              0
+            ],
+            "traits": {
+              "damage": 8,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 7,
+              "shields": 1,
+              "speed": 9,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 1.15
+          },
+          {
+            "name": "Spartan Flame Unit",
+            "description": "Spartan-bodied flame unit with a Flamethrower and high resistance.",
+            "team": 2,
+            "cost": 100,
+            "biped": "master_chief",
+            "camera": "third_person",
+            "primary": "flamethrower",
+            "grenades": [
+              2,
+              0,
+              2,
+              0
+            ],
+            "traits": {
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 9,
+              "shields": 1,
+              "speed": 6,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 1.15
+          },
+          {
+            "name": "Marine Heavy",
+            "description": "Marine with a Rocket Launcher and Assault Rifle.",
+            "team": 2,
+            "cost": 150,
+            "biped": "marine",
+            "camera": "third_person",
+            "model_variant": "ma5",
+            "primary": "rocket_launcher",
+            "secondary": "assault_rifle",
+            "grenades": [
+              2,
+              0,
+              0,
+              0
+            ],
+            "traits": {
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 5,
+              "shields": 1,
+              "speed": 2,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 1.15
+          },
+          {
+            "name": "Spartan",
+            "description": "Spartan armed with an Assault Rifle and Magnum.",
+            "team": 2,
+            "cost": 250,
+            "biped": "spartan",
+            "camera": "third_person",
+            "primary": "assault_rifle",
+            "secondary": "magnum",
+            "grenades": [
+              2,
+              0,
+              0,
+              0
+            ],
+            "traits": {
+              "damage": 8,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 6,
+              "shields": 2,
+              "speed": 4,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 1.15
+          },
+          {
+            "name": "Spartan 2 Heavy",
+            "description": "Heavy Spartan armed with a Machine Gun Turret.",
+            "team": 2,
+            "cost": 350,
+            "biped": "spartan",
+            "camera": "third_person",
+            "primary": "machine_gun_turret",
+            "grenades": [
+              2,
+              0,
+              0,
+              0
+            ],
+            "traits": {
+              "ammo": 3,
+              "pickup": 2,
+              "radar": 3,
+              "resistance": 6,
+              "shields": 2,
+              "speed": 3,
+              "vehicles": 3
+            },
+            "max_active": 0,
+            "health": 1.15
+          }
+        ]
+      },
+      "megalo": "-- Three Way Slayer. Compile using faction-battlefront-template.json.\n-- The deployment service owns class purchases and native respawns; this\n-- script only pays out deployment points. The game ends on the normal\n-- Slayer score limit. Teams 0/1/2 are Flood/Covenant/UNSC.\n-- (Phase 2 is never set; the wrapper below matches the original script.)\nalias phase = global.number[0]\nalias flood_players = global.number[1]\nalias covenant_players = global.number[2]\nalias unsc_players = global.number[3]\nalias scratch = global.number[4]\nalias points = global.number[5]\nalias income = global.timer[1]\nalias kills = player.number[0]\n\non init: do\n    income = 30\nend\n\nif phase != 2 then\n    flood_players = 0\n    covenant_players = 0\n    unsc_players = 0\n    for each player do\n        if current_player.team == team[0] then flood_players += 1 end\n        if current_player.team == team[1] then covenant_players += 1 end\n        if current_player.team == team[2] then unsc_players += 1 end\n        -- Enemy kills count even when a projectile lands after our death.\n        -- This is a wallet, independent of the native team/scoreboard score.\n        scratch = current_player.get_kill_count()\n        scratch -= current_player.kills\n        if scratch > 0 then\n            scratch *= script_option[0]\n            points = current_player.get_deployment_points()\n            points += scratch\n            if points > 100000 then points = 100000 end\n            current_player.set_deployment_points(points)\n        end\n        current_player.kills = current_player.get_kill_count()\n    end\n    -- Income starts once at least two teams have players.\n    if phase == 0 then\n        scratch = 0\n        if flood_players > 0 then scratch += 1 end\n        if covenant_players > 0 then scratch += 1 end\n        if unsc_players > 0 then scratch += 1 end\n        if scratch >= 2 then\n            phase = 1\n            income.set_rate(-100%)\n        end\n    end\n    -- Shared income includes players waiting to deploy, but only during battle.\n    if phase == 1 and income.is_zero() then\n        for each player do\n            if current_player.team == team[0] or current_player.team == team[1] or current_player.team == team[2] then\n                points = current_player.get_deployment_points()\n                points += 25\n                if points > 100000 then points = 100000 end\n                current_player.set_deployment_points(points)\n            end\n        end\n        income = 30\n        income.set_rate(-100%)\n    end\n    script_widget[1].set_text(\"Enemy kills earn points. All teams also earn 25 points every 30 seconds.\")\n    script_widget[1].set_visibility(all_players, true)\nend\n",
+      "objects": {},
+      "globals": [],
+      "team_initial": [],
+      "options": {
+        "points_per_kill": {
+          "value": 10.0,
+          "min": 1.0,
+          "max": 1000.0
+        }
+      },
+      "functions": {},
+      "on_round_start": [],
+      "on_round_end": [],
+      "on_join": [],
+      "on_leave": [],
+      "on_tick": [],
+      "seed": 0
+    }
+  },
+  "options": {
+    "map.vehicles": 3,
+    "mode.score": 500,
+    "player.ammo": 2,
+    "player.grenades": 2,
+    "player.primary_weapon": 17,
+    "player.secondary_weapon": 17,
+    "respawn.seconds": 5,
+    "rounds.limit": 1,
+    "rounds.minutes": 0,
+    "rounds.teams": 1
+  },
+  "map": null,
+  "author": "EVIL SUNFLOWERS"
+}

@@ -1,0 +1,175 @@
+Hey! I need you to help me create a proper, production-ready colour palette for our pixel-art horror RPG, GESTALT. Please read this entire brief before doing anything. I need a functional Aseprite palette file, not just colour suggestions or a pretty image.
+1. THE GAME
+Title: GESTALT
+Genre: Top-down pixel-art psychological horror RPG with turn-based combat.
+Engine: GameMaker.
+Art style: Deliberate, clean pixel art inspired by Undertale/Deltarune's readable colour design, Cry of Fear's oppressive atmosphere, and Silent Hill's environmental storytelling.
+The game explores trauma, perception, experimentation, therapy, and repentance. The world should initially feel believable, but as the protagonist's mental state deteriorates, colours and environmental details can become subtly wrong.
+The palette must support both normal environments and psychologically distorted versions of those same environments.
+2. THE VISUAL IDENTITY
+The palette's name is VEILBLOOM.
+Its identity is based on three main ideas:
+• Deep indigo-violet: architecture, shadows, darkness and the hospital's identity.
+• Sickly jade green: grass, trees, moss, organic growth and vegetation.
+• Acid yellow-green: rare highlights, unnatural illumination and perceptual anomalies.
+The overall palette should be cohesive, bold, eerie and recognisable. It must NOT look like a random collection of unrelated saturated colours.
+The previous palette failed because it had too many competing accent colours and insufficiently developed material ramps. There weren't enough shades to draw detailed environments, and the palette layout looked messy.
+We want a limited, intentional colour system, not a rainbow.
+3. CORE COLOURS
+These five colours establish the palette's identity. Preserve these exact hex values unless you have a compelling technical reason not to.
+NameHexMain purposeVoid Ink#17172FDeepest shadows and outlinesBruised Violet#34345CDark architecture and structural shadowsDusty Lavender#716A9CConcrete, stone and lit architectural planesSickly Jade#347A67Main vegetation colourAcid Leaf#A9D957Rare highlights and psychological anomalies 
+These are the anchors, NOT the complete palette. They are far too few to draw an entire game with.
+4. REQUIRED PALETTE STRUCTURE — VERY IMPORTANT
+I want the palette organised as a rectangular grid of fixed-width material rows, like a carefully organised professional pixel-art palette.
+Each material gets its own horizontal row. Each row should contain its shades in a logical order, ideally from darkest to lightest, left to right.
+Every row must have exactly the same number of slots.
+If a row has fewer colours than the maximum, fill every unused slot with a pure black placeholder: #000000.
+For example, if the palette has 12 slots per row:
+• Row 1: 12 architecture colours.
+• Row 2: 12 vegetation colours.
+• Row 3: 12 earth and dirt colours.
+• A row with only 8 useful colours must have its remaining 4 slots filled with #000000.
+Do not fill gaps with random colours, duplicate shades or transparent entries. Use actual opaque black placeholders.
+The black squares are layout spacers, not usable game colours. Document them clearly in the accompanying palette guide so I don't accidentally use them as material colours.
+If Aseprite cannot reliably distinguish placeholder colours from real colours, include a clear row map or index guide explaining which black entries are spacers. Do not silently replace the black placeholders with other colours.
+Suggested grid layout
+Aim for approximately 12 columns per row, with a row for each of the following material families:
+• Core architecture / violet concrete
+• Secondary stone / paving / gravel
+• Vegetation / grass / foliage
+• Deep vegetation / moss / corrupted growth
+• Dirt / soil / paths
+• Wood / dead timber
+• Metal / gates / railings
+• Glass / windows / reflections
+• Skin / flesh
+• Pale skin / highlights / subtle undertones
+• Fabric / uniforms / hospital clothing
+• Paper / bone / clinical surfaces
+• Blood / injury / restrained narrative accents
+• UI darks / text / panel backgrounds
+• UI lights / readable text / neutral surfaces
+• Unnatural light / mental-state anomalies / distortion
+These are suggested families. If some would benefit from merging or splitting, use your judgement, but maintain the strict rectangular layout.
+Use a maximum of 12 colour slots per row unless you have a compelling reason to use more. The entire palette should remain manageable, ideally around 120–180 meaningful colours plus the required black spacers.
+5. MATERIAL RAMP REQUIREMENTS
+Every material needs enough shades for actual production work. Avoid giving a material just two or three colours unless it is genuinely simple.
+As a starting point, aim for 6–10 usable shades per material family, arranged from darkest to lightest. Some families can share compatible colours, but each row must remain visually distinct and useful.
+Examples:
+Architecture / concrete
+• Deep violet-black
+• Deep indigo
+• Dark violet
+• Mid violet
+• Muted lavender
+• Light lavender
+• Pale concrete
+• Bright concrete highlight
+Vegetation
+• Near-black green
+• Deep forest green
+• Dark jade
+• Core sickly jade
+• Muted green
+• Mid-light jade
+• Pale green highlight
+• Rare acid-leaf accent
+Dirt / earth
+• Dark brown-violet
+• Deep earthy shadow
+• Muted dark earth
+• Main soil colour
+• Midtone earth
+• Light clay
+• Pale dusty highlight
+Metal / gate
+• Near-black metal
+• Deep blue-grey
+• Dark steel
+• Mid steel
+• Muted cool grey
+• Pale steel edge highlight
+Glass
+• Deep blue-green reflection
+• Muted glass shadow
+• Main glass colour
+• Pale reflection
+• Tiny near-white glint
+Skin
+• Deep plum-brown shadow
+• Muted shadow flesh
+• Main skin tone
+• Warm midtone
+• Pale skin highlight
+• Rare strong highlight
+Skin must remain distinguishable from the violet architecture and jade vegetation. Avoid making all skin colours unnaturally purple unless a particular character or scene requires it.
+Fabric / uniforms
+Provide usable ramps for dark clothing, muted hospital clothing, pale fabric and dirty or aged fabric. These should be distinct from both concrete and skin.
+Wood
+Use dark plum-brown shadows, weathered timber midtones and muted warm highlights. Wood must fit the palette without introducing an unrelated orange/brown colour scheme.
+UI
+Provide dark panel backgrounds, readable light text, secondary text, selected-state jade, and rare acid-leaf warning accents.
+Anomalies
+Provide a restrained set of colours for wrong-looking light, corrupted vegetation, distorted shadows and other perceptual anomalies. These colours should be used sparingly rather than contaminating every material ramp.
+6. COLOUR DESIGN RULES
+Please follow these principles throughout:
+Value structure comes first. Each material needs enough difference between its darkest shadow, midtones and highlights to read clearly at small sprite sizes.
+Hue relationships must be deliberate. The architecture should lean violet, vegetation should lean jade, and the main warm colours should be muted and controlled.
+Bold does not mean every colour is bright. Use a predominantly dark and mid-value world, with lighter colours reserved for readable surfaces and focal points.
+Avoid competing accent families. Do not introduce large unrelated families of bright orange, hot pink, electric cyan, red, yellow and lime simultaneously. The main identity is violet and jade, with acid green as the standout accent.
+Keep material identity. A player should be able to distinguish grass from concrete, skin from stone, and metal from glass even when the scene is dark.
+Support psychological horror through selective violations. In distorted scenes, certain surfaces can break their usual colour rules, but the ordinary palette should remain coherent.
+Do not rely on global colour filters. We want the ability to change specific tiles, objects, lights and surfaces intentionally.
+7. ENVIRONMENTS TO SUPPORT
+The first major environment is an outdoor courtyard and entrance to a secretive psychiatric hospital called Mereview Hospital.
+The environment includes:
+• Grass and trees
+• Dirt roads
+• Gravel paths
+• Concrete paths
+• Hospital walls
+• Brick and masonry
+• A large metal entrance gate
+• A security booth
+• A side entrance door
+• Windows and glass
+• Weathered wooden objects
+• Moss, stains and neglected growth
+• Artificial and natural lighting
+• Areas where the environment subtly becomes wrong
+The palette should make it possible to build all of these without inventing new colours every time.
+8. ASEPRITE FILE REQUIREMENTS
+I need a real, usable Aseprite palette file, preferably .ase or .aseprite if appropriate for the intended workflow.
+Please do not simply generate an image of the palette and call it finished.
+Requirements:
+• The file must open correctly in Aseprite.
+• The palette colours must match the intended hex values exactly.
+• The palette must have a fixed rectangular organisation with 12 slots per row.
+• Each row must correspond to one material family.
+• Unused slots must be filled with opaque #000000 spacers.
+• The shade order must be consistent, darkest to lightest from left to right.
+• Avoid duplicate colours within a material row unless there is a documented reason.
+• Include a .gpl backup palette if possible.
+• Include a PNG swatch sheet that reproduces the exact row and column layout.
+• Include a text or PDF reference listing the colour names, hex values, material row, and intended purpose.
+Important technical point: Do not assume that merely listing colours in a palette file guarantees Aseprite will display them in the intended grid layout. Confirm how Aseprite handles palette ordering, palette size and unused slots. If necessary, create a properly sized indexed-colour sprite or another supported reference file to demonstrate the intended grid.
+If you cannot actually test the .ase in Aseprite, be honest about that and provide a reliable alternative workflow rather than claiming it has been verified.
+9. DELIVERABLES
+Please create:
+• GESTALT_VEILBLOOM.ase — native Aseprite palette, if possible.
+• GESTALT_VEILBLOOM.gpl — backup palette.
+• GESTALT_VEILBLOOM_Swatches.png — exact rectangular layout, including black spacers.
+• GESTALT_VEILBLOOM_Palette_Guide.pdf — complete reference guide.
+The PDF should explain the palette philosophy, the role of every material row, colour ramps, hex values, and the rules for applying the palette to the courtyard and psychological distortions.
+10. QUALITY CONTROL
+Before delivering, check:
+• Are the colours cohesive when viewed together?
+• Are there enough shades for actual pixel-art production?
+• Can each material be shaded without constantly borrowing unrelated colours?
+• Is the grid genuinely rectangular and organised by material?
+• Are all unused slots black?
+• Are the five core identity colours preserved?
+• Does the palette still look distinctive rather than generic?
+• Are the files real and usable, rather than merely renamed or untested data?
+Please prioritise a well-designed, coherent, production-ready palette over rushing to generate files.
+If you need to make reasonable artistic decisions, do so and explain them. Only ask me questions if an essential decision genuinely cannot be made from this brief.
